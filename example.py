@@ -81,11 +81,9 @@ class SimpleHandler(BaseHTTPRequestHandler):
 
         prompt = data.get("prompt", "").strip()
 
-        # 🔍 Retrieve context ONCE
         matches = semantic_search(prompt)
         context = "\n\n".join(m.get("content", "") for m in matches)
 
-        # 🧠 System prompt with RAG
         system_prompt = (
             "You are a helpful and energetic assistant, "
             "a fitness trainer, gym and martial arts expert.\n\n"
@@ -98,13 +96,12 @@ class SimpleHandler(BaseHTTPRequestHandler):
                 f"{context}"
             )
 
-        # 🤖 LLM call
         response = client.responses.create(
             model="gpt-5-nano",
             input=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}
-            ]
+            ],
         )
 
         reply_text = response.output_text
@@ -115,7 +112,6 @@ class SimpleHandler(BaseHTTPRequestHandler):
         )
 
 
-# -------------------- Run Server --------------------
 if __name__ == "__main__":
     print(f"Server running at http://{HOST}:{PORT}")
     server = HTTPServer((HOST, PORT), SimpleHandler)
