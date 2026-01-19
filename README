@@ -1,0 +1,17 @@
+INTRODUCTION
+This project is a simple chatbot application that uses the OpenAI API to generate responses based on user input.
+It consists of:
+
+A Python backend (example.py) built with FastAPI
+
+A frontend with two pages (Home and Chat) built using HTML/CSS/JS
+
+A basic interface that sends messages to the backend and displays AI responses
+
+A lightweight architecture suitable for learning, experimenting, and extending
+
+SETUP
+python3 --version
+python3 -m ensurepip --upgrade
+python3 -m pip install --upgrade pip
+OPENAI_API_KEY=your_api_key_here
