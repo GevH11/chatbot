@@ -1,13 +1,10 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+from prompts import SYSTEM_PROMPT_ONE, SYSTEM_PROMPT_TWO
 
 load_dotenv()
 client = OpenAI()
-
-# ---------------- SYSTEM PROMPTS ----------------
-SYSTEM_PROMPT_ONE = {"role": "system", "content": "You are Chatbot ONE. Provide detailed, structured answers. You are a gym and martial arts expert."}
-SYSTEM_PROMPT_TWO = {"role": "system", "content": "You are Chatbot TWO. Short, friendly, simple answers."}
 
 # ---------------- SIMPLIFIED BOT ----------------
 def run_bot(user_message, system_prompt):
@@ -38,7 +35,7 @@ def ChatbotTwo(user_message):
 def simulation(rounds=5):
     # Starting message from ChatbotOne
     output = ChatbotOne("Hello! Let's talk about something interesting.")
-    print("NAREK SAYS:", output)
+    print("Chatbot ONE SAYS:", output)
 
     for i in range(rounds):
         # ChatbotTwo to ChatbotOne
